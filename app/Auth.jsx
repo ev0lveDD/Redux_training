@@ -1,6 +1,15 @@
 'use client';
 
+import { authActions } from "./store";
+import { useDispatch } from "react-redux";
+
 export default function Auth() {
+
+    const dispatch = useDispatch();
+
+    function handleLogin() {
+        dispatch(authActions.login());
+    }
 
     return(
         <main>
@@ -14,7 +23,11 @@ export default function Auth() {
               <label htmlFor='password'>Password</label>
               <input type='password' id='password' className="text-black p-2"/>
             </div>
-            <button className="px-4 py-2 border-2 border-gray-500">Login</button>
+            <button 
+            onClick={() => handleLogin()}
+            className="px-4 py-2 border-2 border-gray-500">
+                Login
+            </button>
           </form>
         </section>
       </main>

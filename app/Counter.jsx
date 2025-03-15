@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Counter() {
 
     const dispatch = useDispatch();
-    const counter = useSelector(state => state.counter);
-    const isHidden = useSelector(state => state.isHidden)
+    const counter = useSelector(state => state.counter.counter);
+    const isHidden = useSelector(state => state.counter.isHidden);
 
     function handleIncrement() {
         dispatch(counterActions.increment())
