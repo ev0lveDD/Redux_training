@@ -1,5 +1,6 @@
 'use client';
 
+import { counterActions } from "./store";
 import { useDispatch, useSelector } from "react-redux";
 
 // useSelector dla pobrania wartosci np state.counter
@@ -12,20 +13,21 @@ export default function Counter() {
     const isHidden = useSelector(state => state.isHidden)
 
     function handleIncrement() {
-        dispatch({type: 'increment'})
+        dispatch(counterActions.increment())
     }
 
     
     function handleIncrease() {
-        dispatch({type: 'increase', amount: 8}) // nazwa (w tym przykladzie 'amount') musi być taka sama jak w store !!!
+        dispatch(counterActions.increase(10)) // {type: unique_id, payload: 10}
+        // dispatch({type: 'increase', amount: 8}) // nazwa (w tym przykladzie 'amount') musi być taka sama jak w store !!!
     }
 
     function handleDecrement() {
-        dispatch({type: 'decrement'})
+        dispatch(counterActions.decrement())
     }
 
     function toggleCounterHandler() {
-        dispatch({type: 'counterToggle'})
+        dispatch(counterActions.toggleCounter())
     }
 
     return(
