@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { Provider } from 'react-redux';
-import store from "./store";
+import store from "./store/store";
 import Counter from "./Counter";
 import Header from "./Header";
 import Content from "./Content";

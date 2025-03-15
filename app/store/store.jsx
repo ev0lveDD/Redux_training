@@ -1,51 +1,20 @@
 'use client';
 
 // import { createStore } from 'redux';
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from "./authSlice";
+import counterReducer from "./counterSlice";
 
-const counterSlice = createSlice({
-  name: 'counter',
-  initialState: { counter: 0, isHidden: false },
-  reducers: {
-    increment(state) {
-      state.counter++;
-    },
-    decrement(state) {
-      state.counter--;
-    },
-    increase(state, action) {
-      state.counter = state.counter + action.payload; // payload - trzyma dane które przekazujemy - zastąpiło to amount
-    },
-    toggleCounter(state) {
-      state.isHidden = !state.isHidden;
-    }
-   }
-});
-
-const authSlice = createSlice({
-  name: 'authentication',
-  initialState: {isAuthenticated: false},
-  reducers: {
-    login(state) {
-      state.isAuthenticated = true;
-    },
-    logout(state) {
-      state.isAuthenticated = false;
-    }
-  }
-})
 
 const store = configureStore({
  // reducer: counterSlice.reducer //  dla jednego reducera
 reducer: { 
-  counter: counterSlice.reducer,
-  auth: authSlice.reducer
+  counter: counterReducer, // było counterSlice.reducer ale że to exportujemy jako default to możemy zmienić nazwę na counterReducer
+  auth: authReducer // było authSlice.reducer ale że to exportujemy jako default to możemy zmienić nazwę na authReducer
  } 
  /* dla wielu reducerów; configureStore merguje potem wiele reducerów w jeden */
 });
 
-export const authActions = authSlice.actions;
-export const counterActions = counterSlice.actions;
 export default store;
 
 

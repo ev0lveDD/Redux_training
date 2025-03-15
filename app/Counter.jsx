@@ -1,6 +1,6 @@
 'use client';
 
-import { counterActions } from "./store";
+import { counterActions } from "./store/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 // useSelector dla pobrania wartosci np state.counter
